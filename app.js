@@ -2,15 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 //React Element
-const Heading = () => <h1 className="head">Namaste React with JSX</h1>;
+const Title = () => <h1 className="head">Namaste React with JSX</h1>;
 
 //React Functional component
+const creator = "Subodh";
 
 const HeadingComponent = () => {
   return (
     <div>
-      <Heading />
+      {/* <Title /> */}
       <h1>React functional Component</h1>
+      {creator}
+      {Title()}
     </div>
   );
 };
