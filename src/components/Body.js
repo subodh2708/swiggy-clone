@@ -25,11 +25,14 @@ const Body = () => {
     );
   };
 
-  if (!resturantsList.length) {
-    return <Shimmer />;
-  }
+  //conditional rendering
+  // if (!resturantsList.length) {
+  //   return <Shimmer />;
+  // }
 
-  return (
+  return resturantsList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div>
       <button
         className="filter"
