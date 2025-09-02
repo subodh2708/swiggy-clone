@@ -1,5 +1,5 @@
 import ResturantCard from "./ResturantCard";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
@@ -30,11 +30,6 @@ const Body = () => {
       restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
     );
   };
-
-  //conditional rendering
-  // if (!resturantsList.length) {
-  //   return <Shimmer />;
-  // }
 
   return filteredRestaurantsList.length === 0 ? (
     <Shimmer />
