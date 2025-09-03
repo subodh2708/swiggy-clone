@@ -36,7 +36,9 @@ const Body = () => {
 
   if (!onlineStatus) {
     return (
-      <h1>Looks like you are offline, please check your internet connection</h1>
+      <h1 className="text-center text-xl font-semibold text-red-500 mt-10">
+        Looks like you are offline, please check your internet connection
+      </h1>
     );
   }
 
@@ -44,16 +46,16 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div>
-      <div className="filter-container">
-        <div className="search">
+      <div className="px-8 py-6">
+        <div className="flex gap-4 mb-6">
           <input
             type="text"
-            className="search-text"
+            className="border border-gray-300 rounded-lg px-4 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="btn-search"
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition"
             onClick={() => {
               console.log(searchText);
               const filteredList = allResturants.filter((restaurant) =>
@@ -68,7 +70,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter"
+          className="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition"
           onClick={() => {
             const newResturantList = allResturants.filter(
               (resturant) => resturant.info.avgRating > 4.5
@@ -79,7 +81,7 @@ const Body = () => {
           Top Resturants
         </button>
       </div>
-      <div className="resturant-container">
+      <div className="grid grid-cols-4 gap-6">
         {filteredRestaurantsList.map((resturant) => (
           <Link key={resturant.info.id} to={"/restaurant/" + resturant.info.id}>
             <ResturantCard restData={resturant} />

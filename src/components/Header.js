@@ -10,25 +10,42 @@ const Header = () => {
   useEffect(() => {}, [btnLogin]);
 
   return (
-    <div className="header">
-      <div>
-        <img src={LOGO_URL} alt="Logo" style={{ width: "150px" }} />
+    <div className="flex items-center justify-between px-8 py-4 bg-white shadow-md ">
+      <div className="flex items-center">
+        <img src={LOGO_URL} alt="Logo" className="w-36 cursor-pointer" />
       </div>
-      <nav className="nav">
-        <ul className="nav-list">
+      <nav className="">
+        <ul className="flex items-center space-x-6 text-lg font-medium text-gray-700">
           <li>Online Status:{onlineStatus ? "🟢" : "🔴"}</li>
           <li>
-            <Link to="/">Home</Link>
+            <Link
+              to="/"
+              className="hover:text-blue-500 transition-colors duration-200"
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link
+              to="/about"
+              className="hover:text-blue-500 transition-colors duration-200"
+            >
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link
+              to="/contact"
+              className="hover:text-blue-500 transition-colors duration-200"
+            >
+              Contact Us
+            </Link>
           </li>
-          <li>Cart</li>
+          <li className="hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+            Cart
+          </li>
           <button
-            className="btn-login"
+            className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition-colors shadow-md duration-200"
             onClick={() => {
               btnLogin === "login"
                 ? setBtnLogin("logout")
