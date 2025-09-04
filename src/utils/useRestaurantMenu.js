@@ -19,11 +19,9 @@ function useRestaurantMenu(resid) {
       .filter(Boolean)[0];
 
     const menuCards = json?.data?.cards?.find((card) => card?.groupedCard);
-    const menu = menuCards?.groupedCard?.cardGroupMap?.REGULAR?.cards?.find(
-      (item) => item.card?.card?.itemCards
-    );
+    const menu = menuCards?.groupedCard?.cardGroupMap?.REGULAR?.cards;
     setRestaurant(restaurantData);
-    setMenuItems(menu.card?.card?.itemCards);
+    setMenuItems(menu);
   }
 
   return [restaurant, menuItems];
