@@ -1,6 +1,9 @@
 import { CDN_URL } from "../utils/constants";
 
 const ResturantCard = ({ restData }) => {
+  if (!restData.info) {
+    return null;
+  }
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition p-4">
       <img
@@ -18,6 +21,19 @@ const ResturantCard = ({ restData }) => {
       </div>
     </div>
   );
+};
+
+export const withOpenLabel = (WrappedCard) => {
+  return ({ restData }) => {
+    return (
+      <div className="relative">
+        <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+          OPEN
+        </span>
+        <WrappedCard restData={restData} />
+      </div>
+    );
+  };
 };
 
 export default ResturantCard;

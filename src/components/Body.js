@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withOpenLabel } from "./ResturantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -11,6 +11,10 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const onlineStatus = useOnlineStatus();
+
+  const RestaurantOpenCard = withOpenLabel(ResturantCard);
+
+  console.log(allResturants);
 
   useEffect(() => {
     fetchData();
@@ -82,9 +86,16 @@ const Body = () => {
         </button>
       </div>
       <div className="grid grid-cols-4 gap-6">
-        {filteredRestaurantsList.map((resturant) => (
-          <Link key={resturant.info.id} to={"/restaurant/" + resturant.info.id}>
-            <ResturantCard restData={resturant} />
+        {filteredRestaurantsList.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            {restaurant.info?.isOpen ? (
+              <RestaurantOpenCard restData={restaurant} />
+            ) : (
+              <ResturantCard restData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
