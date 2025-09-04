@@ -1,6 +1,10 @@
 import { CDN_URL } from "../utils/constants";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const ResturantCard = ({ restData }) => {
+  const { loggedInUser } = useContext(UserContext);
+
   if (!restData.info) {
     return null;
   }
@@ -19,6 +23,7 @@ const ResturantCard = ({ restData }) => {
         <span>⭐ {restData.info.avgRating}</span>
         <span>{restData.info.sla.deliveryTime} mins</span>
       </div>
+      <h1>{loggedInUser}</h1>
     </div>
   );
 };

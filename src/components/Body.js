@@ -1,20 +1,20 @@
 import ResturantCard, { withOpenLabel } from "./ResturantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [allResturants, setAllResturants] = useState([]);
   const [filteredRestaurantsList, setFilteredRestaurantsList] = useState([]);
-
   const [searchText, setSearchText] = useState("");
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
   const RestaurantOpenCard = withOpenLabel(ResturantCard);
-
-  console.log(allResturants);
 
   useEffect(() => {
     fetchData();
@@ -84,6 +84,15 @@ const Body = () => {
         >
           Top Resturants
         </button>
+        <div className="flex gap-2 mt-4">
+          <label className="font-semibold">Username</label>
+          <input
+            type="text"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+            className="border border-black rounded-md p-2"
+          />
+        </div>
       </div>
       <div className="grid grid-cols-4 gap-6">
         {filteredRestaurantsList.map((restaurant) => (
