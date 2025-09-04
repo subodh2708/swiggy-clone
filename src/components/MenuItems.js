@@ -1,6 +1,6 @@
 import ItemList from "./ItemList";
 
-function MenuItems({ menuSections }) {
+function MenuItems({ menuSections, openIndex, setOpenIndex }) {
   const categories = menuSections.filter(
     (c) =>
       c.card?.card?.["@type"] ===
@@ -9,8 +9,13 @@ function MenuItems({ menuSections }) {
 
   return (
     <div className="space-y-4">
-      {categories.map((category) => (
-        <ItemList key={category.card?.card?.title} category={category} />
+      {categories.map((category, index) => (
+        <ItemList
+          key={category.card?.card?.title}
+          category={category}
+          isOpen={openIndex === index}
+          onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+        />
       ))}
     </div>
   );

@@ -2,10 +2,14 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import MenuItems from "./MenuItems";
+import { useState } from "react";
 
 function RestaurantMenu() {
   const { resid } = useParams();
   const [restaurant, menuSections] = useRestaurantMenu(resid);
+
+  // track open category index
+  const [openIndex, setOpenIndex] = useState(null);
 
   if (restaurant === null) {
     return <Shimmer />;
@@ -25,7 +29,11 @@ function RestaurantMenu() {
       </div>
 
       {/* 📋 Menu Sections */}
-      <MenuItems menuSections={menuSections} />
+      <MenuItems
+        menuSections={menuSections}
+        openIndex={openIndex}
+        setOpenIndex={setOpenIndex}
+      />
     </div>
   );
 }
