@@ -1,0 +1,64 @@
+{
+  "info": {
+    "id": "509681",
+    "name": "KFC",
+    "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/12/9/8e41fd0e-6b4a-4b7e-b4a3-819f2e14a253_509681.JPG",
+    "locality": "Lulu Mall",
+    "areaName": "Sushant Golf City",
+    "costForTwo": "₹400 for two",
+    "cuisines": ["Burgers", "Fast Food", "Rolls & Wraps"],
+    "avgRating": 4.5,
+    "parentId": "547",
+    "avgRatingString": "4.5",
+    "totalRatingsString": "972",
+    "sla": {
+      "deliveryTime": 23,
+      "lastMileTravel": 3.9,
+      "serviceability": "SERVICEABLE",
+      "slaString": "20-25 mins",
+      "lastMileTravelString": "3.9 km",
+      "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+      "nextCloseTime": "2025-09-08 00:00:00",
+      "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+      "entityBadges": {
+        "imageBased": {},
+        "textBased": {},
+        "textExtendedBadges": {}
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "ITEMS",
+      "subHeader": "AT ₹599"
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "lottie": {},
+        "video": {}
+      }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {},
+    "externalRatings": {
+      "aggregatedRating": {
+        "rating": "--"
+      }
+    },
+    "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {
+    "context": "seo-data-f81018c3-ed0a-4445-abdd-f4cc83526455"
+  },
+  "cta": {
+    "link": "https://www.swiggy.com/city/lucknow/kfc-lulu-mall-sushant-golf-city-rest509681",
+    "type": "WEBLINK"
+  }
+}

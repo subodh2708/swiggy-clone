@@ -14,7 +14,7 @@ it("should render header component with login button", () => {
     </BrowserRouter>
   );
 
-  const loginButton = screen.getByRole("button", { name: "login" });
+  const loginButton = screen.getByRole("button", { name: "Login" });
 
   //const loginButton = screen.getByText("Login")
 
@@ -30,7 +30,7 @@ it("should render header component with cart item", () => {
     </BrowserRouter>
   );
 
-  const cartItem = screen.getByText("Cart - (0 items)");
+  const cartItem = screen.getByText(/🛒 Cart/);
 
   //const loginButton = screen.getByText("Login")
 
@@ -46,11 +46,11 @@ it("should render header component with login button", () => {
     </BrowserRouter>
   );
 
-  const loginButton = screen.getByRole("button", { name: "login" });
+  const loginButton = screen.getByRole("button", { name: "Login" });
 
   fireEvent.click(loginButton);
 
-  const logoutButton = screen.getByRole("button", { name: "logout" });
+  const logoutButton = screen.getByRole("button", { name: "Logout" });
 
   //const loginButton = screen.getByText("Login")
 

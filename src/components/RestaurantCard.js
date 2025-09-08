@@ -2,14 +2,18 @@ import { CDN_URL } from "../utils/constants";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 
-const ResturantCard = ({ restData }) => {
+const RestaurantCard = ({ restData }) => {
   const { loggedInUser } = useContext(UserContext);
+  console.log(restData);
 
   if (!restData.info) {
     return null;
   }
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition p-4">
+    <div
+      data-testid="resCard"
+      className="bg-white rounded-lg shadow-md hover:shadow-lg transition p-4"
+    >
       <img
         className="w-full h-40 object-cover rounded-md mb-3"
         src={CDN_URL + restData.info.cloudinaryImageId}
@@ -41,4 +45,4 @@ export const withOpenLabel = (WrappedCard) => {
   };
 };
 
-export default ResturantCard;
+export default RestaurantCard;
