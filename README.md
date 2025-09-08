@@ -1,53 +1,27 @@
-🍔 Swiggy Clone (Learning Project)
+# 🍔 Swiggy Clone – Namaste React 🚀
 
-This is a learning project I’m building while going through the Namaste React Course by Akshay Saini.
-It’s not a production-ready app, but a way to practice and explore React concepts by recreating the Swiggy web app with real APIs.
+A food ordering app built while learning from **Namaste React** by Akshay Saini.  
+This project replicates core features of Swiggy like browsing restaurants, viewing menus, and adding items to a cart.
 
-🚀 What I’ve Learned & Implemented
+---
 
-React fundamentals: components, props, state, lifecycle
+## ✨ Features
 
-Hooks → useState, useEffect, useContext, custom hooks
+- 🏠 Browse restaurants (with data from Swiggy API)
+- 🔍 Search restaurants by name
+- ⭐ Filter top-rated restaurants
+- 📋 Accordion-style restaurant menus
+- 🛒 Add / Remove items from Cart using **Redux Toolkit**
+- 🌐 Online/Offline status indicator
+- 🔐 Login/Logout toggle
+- Responsive design with **Tailwind CSS**
 
-React Router for navigation between pages
+---
 
-Redux Toolkit for state management (Cart functionality)
+## 🛠️ Tech Stack
 
-Tailwind CSS for styling
-
-Testing with Jest & React Testing Library
-
-API integration with Swiggy’s live data
-
-✨ Features So Far
-
-🏠 Homepage with restaurant listings
-
-🔎 Search & filter restaurants
-
-🍕 Restaurant menu page (with accordion design)
-
-🛒 Cart (add/remove items)
-
-⚡ Online/offline detection
-
-🛠️ Tech Stack
-
-React (v18)
-
-Redux Toolkit
-
-React Router DOM
-
-Tailwind CSS
-
-Jest + React Testing Library
-
-📸 Screenshots
-
-(Add here once you take some screenshots of homepage, menu, and cart UI)
-
-⚡ Note
-
-This is a work in progress project.
-Main goal: Learn React by building, not just watching tutorials.
+- **React 18** + React Router
+- **Redux Toolkit** for state management
+- **Tailwind CSS** for styling
+- **Jest & React Testing Library** for testing
+- Live restaurant/menu data from Swiggy API
