@@ -52,7 +52,6 @@ class UserClass extends React.Component {
         </UserContext.Consumer>
         <h3>{bio}</h3>
 
-        <h3>instagram: subodh0611</h3>
         <img src={avatar_url} />
       </div>
     );
