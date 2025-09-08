@@ -35,15 +35,15 @@ This clone uses **Swiggy’s live API** to fetch real-time restaurant and menu d
 
 ### Home Page
 
-![c:\Users\Lenovo\Pictures\Screenshots\Screenshot 2025-09-08 194410.png](./screenshots/home.png)
+![Home Screenshot](./screenshots/home.png)
 
 ### Restaurant Menu
 
-![c:\Users\Lenovo\Pictures\Screenshots\Screenshot 2025-09-08 194747.png](./screenshots/menu.png)
+![Menu Screenshot](./screenshots/menu.png)
 
 ### Cart
 
-![c:\Users\Lenovo\Pictures\Screenshots\Screenshot 2025-09-08 194801.png](./screenshots/cart.png)
+![Cart Screenshot](./screenshots/cart.png)
 
 ---
 
