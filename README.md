@@ -1,4 +1,4 @@
-# 🍔 Swiggy Clone – Namaste React 🚀
+# 🍔 Swiggy Clone 🚀
 
 A food ordering app built while learning from **Namaste React** by Akshay Saini.  
 This project replicates core features of Swiggy like browsing restaurants, viewing menus, and adding items to a cart.
