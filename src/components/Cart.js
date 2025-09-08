@@ -5,7 +5,6 @@ import { CDN_URL } from "../utils/constants";
 function Cart() {
   const items = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
-  console.log(items);
 
   if (items.length === 0) {
     return <h2 className="text-center mt-10">Your cart is empty 🛒</h2>;

@@ -4,7 +4,6 @@ import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ({ restData }) => {
   const { loggedInUser } = useContext(UserContext);
-  console.log(restData);
 
   if (!restData.info) {
     return null;
