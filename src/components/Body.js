@@ -19,21 +19,26 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const fetchData = async function () {
-    const data = await fetch(
-      "https://proxy.corsfix.com/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7855384&lng=80.969182&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
+  const fetchData = async () => {
+    try {
+      const data = await fetch("/.netlify/functions/restaurants"); // proxy call
+      const json = await data.json();
 
-    const restaurantCard = json?.data?.cards?.find(
-      (el) => el?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setAllRestaurants(
-      restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
-    );
-    setFilteredRestaurants(
-      restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
-    );
+      const restaurantCard = json?.data?.cards?.find(
+        (el) => el?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      );
+
+      setAllResturants(
+        restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+          []
+      );
+      setFilteredRestaurantsList(
+        restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+          []
+      );
+    } catch (err) {
+      console.error("Error fetching restaurants:", err);
+    }
   };
 
   if (!onlineStatus) {
