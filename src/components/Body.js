@@ -28,11 +28,11 @@ const Body = () => {
         (el) => el?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
 
-      setAllResturants(
+      setAllRestaurants(
         restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
           []
       );
-      setFilteredRestaurantsList(
+      setFilteredRestaurants(
         restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
           []
       );
