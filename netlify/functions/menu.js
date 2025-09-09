@@ -1,10 +1,18 @@
-// netlify/functions/restaurants.js
+// netlify/functions/menu.js
 import fetch from "node-fetch";
 
-export async function handler() {
+export async function handler(event) {
+  const { resId } = event.queryStringParameters;
+
+  if (!resId) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Missing resId" }),
+    };
+  }
+
   try {
-    const url =
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7855384&lng=80.969182&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+    const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7855384&lng=80.969182&restaurantId=${resId}`;
 
     const response = await fetch(url, {
       headers: {
@@ -28,10 +36,10 @@ export async function handler() {
       body: JSON.stringify(data),
     };
   } catch (err) {
-    console.error("Failed to fetch restaurants:", err);
+    console.error("Failed to fetch menu:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Failed to fetch Swiggy data" }),
+      body: JSON.stringify({ error: "Failed to fetch Swiggy menu" }),
     };
   }
 }

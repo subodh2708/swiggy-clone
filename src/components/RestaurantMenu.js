@@ -1,48 +1,92 @@
-// components/RestaurantMenu.js
+// src/components/RestaurantMenu.js
 import { useParams } from "react-router-dom";
-import useRestaurantMenu from "../utils/useRestaurantMenu"; // adjust path if needed
 import Shimmer from "./Shimmer";
-import MenuItems from "./MenuItems";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useState } from "react";
 
-function RestaurantMenu() {
-  const { resid } = useParams();
-  const [restaurant, menuSections] = useRestaurantMenu(resid);
+const RestaurantMenu = () => {
+  const { resId } = useParams();
+  const menuData = useRestaurantMenu(resId);
 
-  // track open category index for accordion
   const [openIndex, setOpenIndex] = useState(null);
 
-  if (restaurant === null) {
+  if (!menuData) {
     return <Shimmer />;
   }
 
-  return (
-    <div className="px-4 py-6 flex justify-center">
-      <div className="w-full max-w-3xl">
-        {/* restaurant header */}
-        <div className="bg-white shadow-lg rounded-xl p-6 mb-6">
-          <h1 className="text-3xl font-semibold text-gray-800">
-            {restaurant?.name}
-          </h1>
-          <p className="text-sm text-gray-500 mt-1">
-            {restaurant?.cuisines?.join?.(", ")}
-          </p>
-          <p className="text-gray-700 font-medium mt-2">
-            {restaurant?.costForTwoMessage}
-          </p>
-        </div>
+  const { name, cuisines, costForTwoMessage } =
+    menuData?.cards?.[2]?.card?.card?.info || {};
 
-        {/* menu */}
-        <div className="space-y-4">
-          <MenuItems
-            menuSections={menuSections}
-            openIndex={openIndex}
-            setOpenIndex={setOpenIndex}
-          />
-        </div>
+  // Filter categories (like Recommended, Burgers, etc.)
+  const categories =
+    menuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ) || [];
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-6">
+      {/* Restaurant Info */}
+      <h1 className="text-3xl font-bold text-gray-800 mb-2">{name}</h1>
+      <p className="text-gray-600 mb-1">{cuisines?.join(", ")}</p>
+      <p className="text-gray-700 font-medium mb-6">{costForTwoMessage}</p>
+
+      {/* Categories Accordion */}
+      <div className="space-y-4">
+        {categories.map((category, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div
+              key={category.card.card.title}
+              className="border border-gray-200 rounded-lg shadow-sm"
+            >
+              {/* Accordion Header */}
+              <button
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg"
+              >
+                <span className="text-lg font-semibold text-gray-800">
+                  {category.card.card.title}
+                </span>
+                <span className="text-gray-500">{isOpen ? "▲" : "▼"}</span>
+              </button>
+
+              {/* Accordion Body */}
+              {isOpen && (
+                <div className="p-4 space-y-3">
+                  {category.card.card.itemCards?.map((item) => (
+                    <div
+                      key={item.card.info.id}
+                      className="flex justify-between items-center border-b pb-2 last:border-none"
+                    >
+                      <div>
+                        <p className="font-medium text-gray-800">
+                          {item.card.info.name}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          ₹
+                          {item.card.info.price / 100 ||
+                            item.card.info.defaultPrice / 100}
+                        </p>
+                      </div>
+                      {item.card.info.imageId && (
+                        <img
+                          src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/${item.card.info.imageId}`}
+                          alt={item.card.info.name}
+                          className="w-20 h-20 rounded-md object-cover"
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
-}
+};
 
 export default RestaurantMenu;
