@@ -22,7 +22,6 @@ const Body = () => {
   const fetchData = async function () {
     const data = await fetch("/.netlify/functions/restaurants");
     const json = await data.json();
-    console.log(json);
 
     const restaurantCard = json?.data?.cards?.find(
       (el) => el?.card?.card?.gridElements?.infoWithStyle?.restaurants

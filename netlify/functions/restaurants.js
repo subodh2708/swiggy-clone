@@ -3,32 +3,31 @@ import fetch from "node-fetch";
 
 export async function handler() {
   try {
-    const url =
+    const targetUrl =
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7855384&lng=80.969182&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
-    const response = await fetch(url, {
+    const response = await fetch(targetUrl, {
       headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0",
         Accept: "application/json",
       },
     });
 
     if (!response.ok) {
-      throw new Error(`Swiggy API error: ${response.status}`);
+      throw new Error(`Swiggy API failed with ${response.status}`);
     }
 
     const data = await response.json();
 
     return {
       statusCode: 200,
+      body: JSON.stringify(data),
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(data),
     };
-  } catch (err) {
-    console.error("Failed to fetch restaurants:", err);
+  } catch (error) {
+    console.error("Netlify function error:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Failed to fetch Swiggy data" }),
