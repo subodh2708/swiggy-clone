@@ -19,11 +19,15 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
+  const fetchData = async function () {
+    const apiUrl =
+      "https://corsproxy.io/?" +
+      encodeURIComponent(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7855384&lng=80.969182&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+
     try {
-      const data = await fetch(
-        "https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7855384&lng=80.969182&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      ); // proxy call
+      const data = await fetch(apiUrl);
       const json = await data.json();
 
       const restaurantCard = json?.data?.cards?.find(
@@ -38,8 +42,8 @@ const Body = () => {
         restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
           []
       );
-    } catch (err) {
-      console.error("Error fetching restaurants:", err);
+    } catch (error) {
+      console.error("Error fetching restaurants:", error);
     }
   };
 
